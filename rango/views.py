@@ -22,17 +22,14 @@ def about(request):
     
 def show_category(request, category_name_slug):
     context_dict = {}
-
     try:
         category = Category.objects.get(slug=category_name_slug)
         pages = Page.objects.filter(category=category)
-
         context_dict['pages'] = pages
         context_dict['category'] = category
     except Category.DoesNotExist:
         context_dict['pages'] = None
         context_dict['category'] = None
-    
     return render(request, 'rango/category.html', context=context_dict)
 
 def add_category(request):
@@ -46,7 +43,7 @@ def add_category(request):
             return redirect(reverse('rango:index'))
         else:
             print(form.errors)
-    return render(request, 'rango/add_category.html', {'form':form})
+    return render(request, 'rango/add_category.html', {'form': form})
     
 def add_page(request, category_name_slug):
     try:
