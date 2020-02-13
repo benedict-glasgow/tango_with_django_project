@@ -136,3 +136,7 @@ STATIC_URL = '/static/'
 # Media
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+
+# Cookies
+#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
