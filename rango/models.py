@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     NAME_MAX_LENGTH = 128
-    name = models.CharField(max_length=128, unique=True)
+    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     likes = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     
-    def save(self,*args,**kwargs):
+    def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args,**kwargs)
     
